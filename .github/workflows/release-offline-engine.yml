@@ -48,10 +48,10 @@ jobs:
       - name: Export Image Archive for Air-Gapped Use
         run: |
           echo "==> Pulling generated image back to runner context..."
-          docker pull ghcr.io/love-solana/sqlm:${{ steps.meta.outputs.version }}
+          docker pull ghcr.io/love-solana/sqlx:${{ steps.meta.outputs.version }}
           
           echo "==> Bundling image layer configurations..."
-          docker save ghcr.io/love-solana/sqlm:${{ steps.meta.outputs.version }} -o app-image.tar
+          docker save ghcr.io/love-solana/sqlx:${{ steps.meta.outputs.version }} -o app-image.tar
           
           echo "==> Packaging archive and deploy script into zip layer..."
           zip -9 app-delivery-${{ steps.meta.outputs.version }}.zip app-image.tar
