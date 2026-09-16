@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Remove conflicting Docker packages before installing Docker from the official repository.
+sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc docker-buildx podman-docker containerd runc | cut -f1)
+
 # ----------------------------------------------------
 # DOCKER INSTALLATION
 # ----------------------------------------------------
