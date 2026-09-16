@@ -115,13 +115,14 @@ docker image prune -f || echo "Warning (W1): Engine storage reclamation warning.
 # S4: RUNNING STATE
 # ----------------------------------------------------
 log_state "S4: RUNNING"
-echo "Booting container application inside isolated networking environment..."
+echo "Booting container application in host networking mode..."
 
-# NEW: inject INIT_ADMIN_PASS into container
+# Inject INIT_ADMIN_PASS into container and expose the application on the host port.
 if ! docker run -d \
     --name "$CONTAINER_NAME" \
-    -p "${TARGET_PORT}:3000" \
+    --network host \
     --restart always \
+    -e PORT="$TARGET_PORT" \
     -e INIT_ADMIN_PASS="$INIT_ADMIN_PASS" \
     "$IMAGE_TAG"; then
     raise_error 4 "E4: Runtime container execution failure. Address port configuration collision or runtime memory limit hit."
