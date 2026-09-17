@@ -28,8 +28,7 @@ sudo apt update
 # Install the Docker packages without prompting for confirmation:
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# Verify that Docker is running:
-sudo systemctl status docker
+
 
 # Strict configurations to capture errors instantly within our FSM
 set -eo pipefail
