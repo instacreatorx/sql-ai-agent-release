@@ -2,3 +2,7 @@ mkdir -p app-offline-install && cd app-offline-install && curl -L -O https://git
 0m Folder created and both files downloaded."
 
 ./deploy-offline.sh --pass=xyz123
+
+
+
+
